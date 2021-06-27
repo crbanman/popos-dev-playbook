@@ -4,7 +4,7 @@ This playbook installs most of the software that I use on my dev machine for web
 
 ## Assumptions
 
-Meant to be used on a install of Pop!_OS 20.10, but should work on existing systems (be sure to configure only what you need). It will probably work on Ubuntu, but that hasn't been tested so your mileage may vary.
+Meant to be used on a fresh install of Pop!_OS 20.10, but should work on existing installs of the OS (be sure to configure only what you need). It will probably work on Ubuntu, but that hasn't been tested so your mileage may vary.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ export PATH=$PATH:~/.local/bin
 Download or clone this repository to your local drive.
 
 ```console
-git clone git@github.com:crbanman/popos-dev-playbook.git
+git clone https://github.com/staticdev/linux-developer-playbook.git
 cd popos-dev-playbook
 ```
 
@@ -35,11 +35,13 @@ ansible-galaxy install -r requirements.yml
 
 1. Make a copy of `default.config.yml` with the name `config.yml` and change the configurations you want to use.
 
-2. Run the playbook with the command and enter your user account password when prompted:
+1. Run the playbook with the command and enter your user account password when prompted:
 
-```console
+   ```console
    ansible-playbook main.yml --ask-become-pass
-```
+   ```
+
+1. Restart your machine.
 
 ## Author
 
