@@ -22,7 +22,7 @@ Download or clone this repository to your local drive.
 
 ```console
 git clone git@github.com:crbanman/popos-dev-playbook.git
-cd pop-os-developer-playbook/
+cd popos-dev-playbook
 ```
 
 Install dependencies:
