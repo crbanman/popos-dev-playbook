@@ -1,0 +1,20 @@
+---
+- name: Add the Apt signing key
+  apt_key:
+    url: https://baltocdn.com/helm/signing.asc
+    state: present
+
+- name: Add the helm repository
+  apt_repository:
+    repo: deb https://baltocdn.com/helm/stable/debian/ all main
+    state: present
+    filename: helm-stable-debian
+
+- name: Install the helm package
+  apt:
+    name: helm
+    update_cache: true
+  register: task_result
+  until: task_result is success
+  retries: 10
+  delay: 2

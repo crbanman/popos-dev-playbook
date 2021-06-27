@@ -1,0 +1,5 @@
+---
+- name: bitwarden install
+  flatpak:
+    name: com.bitwarden.desktop
+    method: user

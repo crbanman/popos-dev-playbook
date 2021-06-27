@@ -1,0 +1,17 @@
+{
+    "ansible.validate.executablePath": "ansible-lint",
+    "ansible.vault.executablePath": "ansible-vault",
+    "files.trimTrailingWhitespace": true,
+    "cSpell.words": [
+        "aws",
+        "awscli",
+        "bitwarden",
+        "flatpak",
+        "jetbrains",
+        "kubectl",
+        "kubernetes",
+        "lens",
+        "minikube",
+        "spotify"
+    ]
+}

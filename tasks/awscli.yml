@@ -1,0 +1,24 @@
+---
+- name: check if awscli is installed
+  command: aws --version
+  register: aws_version_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Download awscli zip
+  get_url:
+    url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp/awscliv2.zip
+  become: true
+  when: aws_version_cmd is failed
+
+- name: Unzip awscli zip
+  unarchive:
+    src: /tmp/awscliv2.zip
+    dest: /tmp
+  when: aws_version_cmd is failed
+
+- name: Run install script
+  command: /tmp/aws/install
+  become: true
+  when: aws_version_cmd is failed

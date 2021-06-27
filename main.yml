@@ -1,0 +1,134 @@
+---
+- hosts: all
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - name: Include playbook configuration.
+      include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags:
+        - always
+    - name: Set ansible_distribution to Ubuntu
+      set_fact: ansible_distribution="Ubuntu"
+      tags:
+        - always
+
+  roles:
+    - role: darkwizard242.googlechrome
+      when: install_chrome
+      become: true
+      tags:
+        - chrome
+    - role: geerlingguy.docker
+      when: install_docker
+      become: true
+      tags:
+        - docker
+    - role: geerlingguy.php
+      when: install_php
+      become: true
+      tags:
+        - php
+    - role: geerlingguy.composer
+      when: install_composer
+      become: true
+      tags:
+        - php
+        - composer
+    - role: gantsign.antigen
+      when: install_zsh
+      become: true
+      users: "{{antigen_users}}"
+      tags:
+        - zsh
+        - antigen
+    - role: gantsign.antigen_bundles
+      when: install_zsh
+      become: true
+      users: "{{antigen_bundle_users}}"
+      tags:
+        - zsh
+        - antigen_bundles
+    - role: webarchitect609.jet_brains_toolbox
+      when: install_jetbrains_toolbox
+      become: true
+      tags:
+        - jetbrains_toolbox
+    - role: ngetchell.vscode
+      when: install_vscode
+      become: true
+      tags:
+        - vscode
+    - role: stephdewit.nvm
+      when: install_nvm
+      tags:
+        - nvm
+
+  tasks:
+    - name: Install AWS Cli
+      include: tasks/awscli.yml
+      when: install_aws
+      become: true
+      tags:
+        - awscli
+
+    - name: Install kubectl
+      include: tasks/kubectl.yml
+      when: install_kubectl
+      become: true
+      tags:
+        - kubectl
+        - k8s
+
+    - name: Install minikube
+      include: tasks/minikube.yml
+      when: install_minikube
+      become: true
+      tags:
+        - minikube
+        - k8s
+
+    - name: Install helm
+      include: tasks/helm.yml
+      when: install_helm
+      become: true
+      tags:
+        - helm
+        - k8s
+
+    - name: install lens
+      include: tasks/lens.yml
+      when: install_lens
+      become: true
+      tags:
+        - lens
+        - k8s
+
+    - name: Install Spotify
+      include: tasks/spotify.yml
+      when: install_spotify
+      tags:
+        - spotify
+
+    - name: Install Bitwarden
+      include: tasks/bitwarden.yml
+      when: install_bitwarden
+      tags:
+        - bitwarden
+
+    - name: Install Slack
+      include: tasks/slack.yml
+      when: install_slack
+      become: true
+      tags:
+        - slack
+
+    - name: Install Mattermost Desktop
+      include: tasks/mattermost.yml
+      when: install_mattermost
+      become: true
+      tags:
+        - mattermost

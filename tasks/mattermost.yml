@@ -1,0 +1,17 @@
+---
+- name: Only run update cache if the last one is more than 3600 seconds ago
+  apt:
+    update_cache: true
+    cache_valid_time: 3600
+  become: true
+
+- name: Ensure apt-transport-https is installed
+  apt:
+    name:
+      - apt-transport-https
+      - gpg
+    state: present
+
+- name: mattermost desktop install
+  apt:
+    deb: https://releases.mattermost.com/desktop/{{ mattermost_version }}/mattermost-desktop-{{ mattermost_version }}-linux-amd64.deb

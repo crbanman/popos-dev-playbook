@@ -1,0 +1,59 @@
+---
+downloads: ~/.ansible-downloads/
+
+install_chrome: true
+
+install_docker: true
+docker_compose_version: "1.28.0"
+docker_users: ["{{ ansible_env.USER }}"]
+
+install_zsh: true
+antigen_users:
+  - username: "{{ ansible_env.USER }}"
+    antigen_libraries:
+      - name: oh-my-zsh
+    antigen_theme:
+      name: robbyrussell
+    antigen_bundles:
+      - name: command-not-found
+      - name: git
+      - name: nvm
+      - name: aws
+      - name: kubectl
+antigen_bundle_users:
+  - username: "{{ ansible_env.USER }}"
+    antigen_bundles:
+      - name: zsh-autosuggestions
+        url: zsh-users/zsh-autosuggestions
+      - name: zsh-syntax-highlighting
+        url: zsh-users/zsh-syntax-highlighting
+
+install_php: true
+php_enable_webserver: false
+install_composer: true
+
+install_aws: true
+
+install_kubectl: true
+install_minikube: true
+install_helm: true
+
+install_lens: true
+lens_version: 4.2.5
+
+install_nvm: true
+nvm_version: "latest"
+nvm_node_version: "lts"
+
+install_jetbrains_toolbox: true
+
+install_vscode: true
+
+install_spotify: true
+install_bitwarden: true
+
+install_mattermost: true
+mattermost_version: 4.7.0
+
+install_slack: true
+slack_version: 4.17.0

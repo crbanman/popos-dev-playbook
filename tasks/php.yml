@@ -1,0 +1,43 @@
+---
+- name: Only run update cache if the last one is more than 3600 seconds ago
+  apt:
+    update_cache: true
+    cache_valid_time: 3600
+  become: true
+
+- name: Install PHP
+  apt:
+    name: php
+- name: check if composer is installed
+  command: composer --version
+  register: composer_command_version
+  changed_when: false
+  ignore_errors: true
+
+- name: Install Composer
+  shell: |
+    cd /tmp
+    EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+    if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
+    then
+        >&2 echo 'ERROR: Invalid installer checksum'
+        rm composer-setup.php
+        exit 1
+    fi
+
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer --quiet
+    RESULT=$?
+    rm composer-setup.php
+    exit $RESULT
+  args:
+    executable: /bin/bash
+  when: composer_command_version is failed
+
+- name: Stop and disable Apache
+  systemd:
+    state: stopped
+    enabled: false
+    name: apache2.service
