@@ -21,7 +21,7 @@ export PATH=$PATH:~/.local/bin
 Download or clone this repository to your local drive.
 
 ```console
-git clone https://github.com/staticdev/linux-developer-playbook.git
+git clone https://github.com/crbanman/popos-dev-playbook.git
 cd popos-dev-playbook
 ```
 
