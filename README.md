@@ -98,7 +98,7 @@ There are some things that I haven't been able to automate yet.
 
       ```json
       {
-      "registry-mirrors": ["http://localhost:6000"]
+        "registry-mirrors": ["http://localhost:6000"]
       }
       ```
 
