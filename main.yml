@@ -142,5 +142,6 @@
     - name: Install camset
       include: tasks/camset.yml
       when: install_camset
+      become: true
       tags:
         - camset
