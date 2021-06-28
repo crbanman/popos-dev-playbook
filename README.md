@@ -79,6 +79,50 @@ There are some things that I haven't been able to automate yet.
    /opt/jetbrains-toolbox-1.20.8804/jetbrains-toolbox
    ```
 
+1. Add docker image caching to avoid hitting the docker pull limit.
+   
+   **Note: This solution is probably overkill, but I have run into the limit a couple of times in the past when working on some docker stuff. Just signing in to docker hub will double your pulls from 100 pull to 200 pulls every 6 hours.**
+
+   1. Pull and run the registry image on port `6000`
+    
+      ```console
+      docker run -d -p 6000:5000 \
+      -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
+      --restart always \
+      --name registry registry:2
+      ```
+
+      Note: This container will automatically restart when docker is restarted (i.e. system bootup)
+
+   1. Create the file `/etc/docker/daemon.json`
+
+      ```json
+      {
+      "registry-mirrors": ["http://localhost:6000"]
+      }
+      ```
+
+   1. Restart the docker service
+
+      ```console
+      sudo systemctl restart docker
+      ```
+
+   1. Test that the mirror is working
+
+      1. Pull an image you don't already have locally
+         ```console
+         docker pull node
+         ```
+      1. Curl the local registry
+         ```console
+         curl http://localhost:6000/v2/_catalog
+         ```
+         Expected result:
+         ```console
+         {"repositories":["library/node"]}
+         ```
+
 ## Author
 
 This project was created by [Cody Banman](https://github.com/crbanman) (originally inspired by [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook) and [staticdev/linux-developer-playbook](https://github.com/staticdev/linux-developer-playbook))
