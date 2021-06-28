@@ -63,6 +63,8 @@ install_nvm: true
 nvm_version: "latest"
 nvm_node_version: "lts"
 
+install_yarn: true
+
 # IDEs
 install_jetbrains_toolbox: true
 install_vscode: true

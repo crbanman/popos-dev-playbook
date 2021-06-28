@@ -1,14 +1,15 @@
 ---
 roles:
   - name: darkwizard242.googlechrome
+  - name: gantsign.antigen
+  - name: gantsign.antigen_bundles
   - name: geerlingguy.composer
   - name: geerlingguy.docker
   - name: geerlingguy.php
-  - name: gantsign.antigen
-  - name: gantsign.antigen_bundles
-  - name: webarchitect609.jet_brains_toolbox
   - name: ngetchell.vscode
+  - name: ocha.yarn
   - name: stephdewit.nvm
+  - name: webarchitect609.jet_brains_toolbox
 
 collections:
   - name: community.general

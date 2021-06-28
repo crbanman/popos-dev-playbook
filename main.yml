@@ -65,7 +65,14 @@
     - role: stephdewit.nvm
       when: install_nvm
       tags:
+        - node
         - nvm
+    - role: ocha.yarn
+      when: install_yarn
+      become: true
+      tags:
+        - node
+        - yarn
 
   tasks:
     - name: Install AWS Cli
