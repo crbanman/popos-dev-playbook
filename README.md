@@ -4,7 +4,7 @@ This playbook installs most of the software that I use on my dev machine for web
 
 ## Assumptions
 
-Meant to be used on a fresh install of Pop!_OS 20.10, but should work on existing installs of the OS (be sure to configure only what you need). It will probably work on Ubuntu, but that hasn't been tested so your mileage may vary.
+Meant to be used on a fresh install of Pop!_OS 20.10, but should work on existing installs of the OS (be sure to configure only what you need). It will probably work on Ubuntu if flatpak is installed, but that hasn't been tested so your mileage may vary.
 
 ## Prerequisites
 
@@ -72,6 +72,12 @@ There are some things that I haven't been able to automate yet.
         ```command
         ssh-add ~/.ssh/id_ed25519
         ```
+
+1. Run JetBrains Toolbox for the first time and install PHPStorm
+
+   ```command
+   /opt/jetbrains-toolbox-1.20.8804/jetbrains-toolbox
+   ```
 
 ## Author
 

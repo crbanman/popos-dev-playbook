@@ -1,0 +1,5 @@
+---
+- name: Set .zshrc
+  template:
+    src: zsh/.zshrc.t2
+    dest: "{{ ansible_env.HOME }}/.zshrc"

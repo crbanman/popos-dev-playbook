@@ -1,12 +1,15 @@
 ---
 downloads: ~/.ansible-downloads/
 
+# Browser
 install_chrome: true
 
+# Docker
 install_docker: true
 docker_compose_version: "1.28.0"
 docker_users: ["{{ ansible_env.USER }}"]
 
+# ZSH
 install_zsh: true
 antigen_users:
   - username: "{{ ansible_env.USER }}"
@@ -30,12 +33,12 @@ antigen_bundle_users:
       - name: zsh-syntax-highlighting
         url: zsh-users/zsh-syntax-highlighting
 
-install_php: true
-php_enable_webserver: false
-install_composer: true
+configure_zshrc: true
 
+# AWS cli
 install_aws: true
 
+# K8s
 install_kubectl: true
 install_minikube: true
 install_helm: true
@@ -43,19 +46,32 @@ install_helm: true
 install_lens: true
 lens_version: 4.2.5
 
+# PHP
+install_php: true
+php_enable_webserver: false
+install_composer: true
+
+# Node
 install_nvm: true
 nvm_version: "latest"
 nvm_node_version: "lts"
 
+# IDEs
 install_jetbrains_toolbox: true
-
 install_vscode: true
 
+# Music
 install_spotify: true
+
+# Password manager
 install_bitwarden: true
 
+# IM apps
 install_mattermost: true
 mattermost_version: 4.7.0
 
 install_slack: true
 slack_version: 4.17.0
+
+# Tool for adjusting webcam settings
+install_camset: true

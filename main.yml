@@ -132,3 +132,15 @@
       become: true
       tags:
         - mattermost
+
+    - name: Set .zshrc
+      include: tasks/zshrc.yml
+      when: configure_zshrc
+      tags:
+        - zshrc
+
+    - name: Install camset
+      include: tasks/camset.yml
+      when: install_camset
+      tags:
+        - camset
