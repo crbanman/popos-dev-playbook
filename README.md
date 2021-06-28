@@ -43,6 +43,36 @@ ansible-galaxy install -r requirements.yml
 
 1. Restart your machine.
 
+## Manual changes
+
+There are some things that I haven't been able to automate yet.
+
+1. Set currently used `node` version with `nvm`
+
+   ```console
+   nvm use --lts
+   ```
+
+1. Add ssh keys. For better or worse I backup my keys, so I need to copy them to `~/.ssh/` and add them to the `ssh-agent`.
+
+    1. Set the the appropriate file permissions for each key:
+
+       ```command
+       chmod 400 ~/.ssh/id_ed25519
+       ```
+
+    1. Start the ssh agent
+
+        ```command
+        eval "$(ssh-agent -s)"
+        ```
+
+    1. For each key run `ssh-add`
+
+        ```command
+        ssh-add ~/.ssh/id_ed25519
+        ```
+
 ## Author
 
 This project was created by [Cody Banman](https://github.com/crbanman) (originally inspired by [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook) and [staticdev/linux-developer-playbook](https://github.com/staticdev/linux-developer-playbook))

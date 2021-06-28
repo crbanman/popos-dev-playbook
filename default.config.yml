@@ -23,6 +23,8 @@ antigen_users:
 antigen_bundle_users:
   - username: "{{ ansible_env.USER }}"
     antigen_bundles:
+      - name: zsh-completions
+        url: zsh-users/zsh-completions
       - name: zsh-autosuggestions
         url: zsh-users/zsh-autosuggestions
       - name: zsh-syntax-highlighting
