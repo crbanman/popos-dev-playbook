@@ -145,3 +145,10 @@
       become: true
       tags:
         - camset
+
+    - name: Install invoke
+      include: tasks/invoke.yml
+      when: install_invoke
+      become: true
+      tags:
+        - invoke

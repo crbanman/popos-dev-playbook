@@ -67,6 +67,9 @@ nvm_node_version: "lts"
 install_jetbrains_toolbox: true
 install_vscode: true
 
+# Task execution tool
+install_invoke: true
+
 # Music
 install_spotify: true
 
