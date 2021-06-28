@@ -47,31 +47,35 @@ ansible-galaxy install -r requirements.yml
 
 There are some things that I haven't been able to automate yet.
 
-1. Set currently used `node` version with `nvm`
+### Set node version
 
-   ```console
-   nvm use --lts
+Set currently used `node` version with `nvm`
+
+```console
+nvm use --lts
+```
+
+### Register SSH Keys
+
+Add ssh keys. For better or worse I backup my keys, so I need to copy them to `~/.ssh/` and add them to the `ssh-agent`.
+
+1. Set the the appropriate file permissions for each key:
+
+   ```command
+   chmod 400 ~/.ssh/id_ed25519
    ```
 
-1. Add ssh keys. For better or worse I backup my keys, so I need to copy them to `~/.ssh/` and add them to the `ssh-agent`.
+1. Start the ssh agent
 
-    1. Set the the appropriate file permissions for each key:
+    ```command
+    eval "$(ssh-agent -s)"
+    ```
 
-       ```command
-       chmod 400 ~/.ssh/id_ed25519
-       ```
+1. For each key run `ssh-add`
 
-    1. Start the ssh agent
-
-        ```command
-        eval "$(ssh-agent -s)"
-        ```
-
-    1. For each key run `ssh-add`
-
-        ```command
-        ssh-add ~/.ssh/id_ed25519
-        ```
+   ```command
+   ssh-add ~/.ssh/id_ed25519
+   ```
 
 1. Run JetBrains Toolbox for the first time and install PHPStorm
 
@@ -79,49 +83,51 @@ There are some things that I haven't been able to automate yet.
    /opt/jetbrains-toolbox-1.20.8804/jetbrains-toolbox
    ```
 
-1. Add docker image caching to avoid hitting the docker pull limit.
+### Docker registry cache
+
+Add docker image caching to avoid hitting the docker pull limit.
    
-   **Note: This solution is probably overkill, but I have run into the limit a couple of times in the past when working on some docker stuff. Just signing in to docker hub will double your pulls from 100 pull to 200 pulls every 6 hours.**
+**Note: This solution is probably overkill, but I have run into the limit a couple of times in the past when working on some docker stuff. Just signing in to docker hub will double your pulls from 100 pull to 200 pulls every 6 hours.**
 
-   1. Pull and run the registry image on port `6000`
-    
+1. Pull and run the registry image on port `6000`
+   
+   ```console
+   docker run -d -p 6000:5000 \
+   -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
+   --restart always \
+   --name registry registry:2
+   ```
+
+   Note: This container will automatically restart when docker is restarted (i.e. system bootup)
+
+1. Create the file `/etc/docker/daemon.json`
+
+   ```json
+   {
+   "registry-mirrors": ["http://localhost:6000"]
+   }
+   ```
+
+1. Restart the docker service
+
+   ```console
+   sudo systemctl restart docker
+   ```
+
+1. Test that the mirror is working
+
+   1. Pull an image you don't already have locally
       ```console
-      docker run -d -p 6000:5000 \
-      -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
-      --restart always \
-      --name registry registry:2
+      docker pull node
       ```
-
-      Note: This container will automatically restart when docker is restarted (i.e. system bootup)
-
-   1. Create the file `/etc/docker/daemon.json`
-
-      ```json
-      {
-        "registry-mirrors": ["http://localhost:6000"]
-      }
-      ```
-
-   1. Restart the docker service
-
+   1. Curl the local registry
       ```console
-      sudo systemctl restart docker
+      curl http://localhost:6000/v2/_catalog
       ```
-
-   1. Test that the mirror is working
-
-      1. Pull an image you don't already have locally
-         ```console
-         docker pull node
-         ```
-      1. Curl the local registry
-         ```console
-         curl http://localhost:6000/v2/_catalog
-         ```
-         Expected result:
-         ```console
-         {"repositories":["library/node"]}
-         ```
+      Expected result:
+      ```console
+      {"repositories":["library/node"]}
+      ```
 
 ## Author
 
