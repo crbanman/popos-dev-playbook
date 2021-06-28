@@ -49,6 +49,13 @@ lens_version: 4.2.5
 # PHP
 install_php: true
 php_enable_webserver: false
+php_packages_extra:
+  - php-curl
+  - php-gd
+  - php-mysql
+  - php-xml
+  - php-zip
+  - php-mbstring
 install_composer: true
 
 # Node
