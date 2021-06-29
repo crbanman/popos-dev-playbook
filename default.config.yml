@@ -87,3 +87,6 @@ slack_version: 4.17.0
 
 # Tool for adjusting webcam settings
 install_camset: true
+
+# Screen capture to gif utility
+install_peek: true

@@ -159,3 +159,10 @@
       become: true
       tags:
         - invoke
+
+    - name: Install peek
+      include: tasks/peek.yml
+      when: install_peek
+      become: true
+      tags:
+        - peek

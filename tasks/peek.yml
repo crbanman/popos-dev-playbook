@@ -1,0 +1,8 @@
+---
+- name: Only run update cache if the last one is more than 3600 seconds ago
+  apt:
+    update_cache: true
+    cache_valid_time: 3600
+- name: Install the peek package
+  apt:
+    name: peek
