@@ -4,7 +4,7 @@ This playbook installs most of the software that I use on my dev machine for web
 
 ## Assumptions
 
-Meant to be used on a fresh install of Pop!_OS 20.10, but should work on existing installs of the OS (be sure to configure only what you need). It will probably work on Ubuntu if flatpak is installed, but that hasn't been tested so your mileage may vary.
+Meant to be used on a fresh install of Pop!_OS 21.04, but should work on existing installs of the OS (be sure to configure only what you need). It will probably work on Ubuntu if flatpak is installed, but that hasn't been tested so your mileage may vary.
 
 ## Prerequisites
 
@@ -86,11 +86,11 @@ Add ssh keys. For better or worse I backup my keys, so I need to copy them to `~
 ### Docker registry cache
 
 Add docker image caching to avoid hitting the docker pull limit.
-   
+
 **Note: This solution is probably overkill, but I have run into the limit a couple of times in the past when working on some docker stuff. Just signing in to docker hub will double your pulls from 100 pull to 200 pulls every 6 hours.**
 
 1. Pull and run the registry image on port `6000`
-   
+
    ```console
    docker run -d -p 6000:5000 \
    -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
