@@ -1,0 +1,18 @@
+---
+- name: check if lagoon cli is installed
+  stat:
+    path: /usr/local/bin/lagoon
+  register: lagoon_version_command
+  changed_when: false
+
+- name: Download lagoon binary
+  get_url:
+    url: https://github.com/amazeeio/lagoon-cli/releases/download/{{ lagoon_version }}/lagoon-cli-{{ lagoon_version }}-linux-amd64
+    dest: /usr/local/bin/lagoon
+  become: true
+  when: lagoon_version_command is failed
+
+- name: Ensure lagoon binary is executable
+  file:
+    path: /usr/local/bin/lagoon
+    mode: '0755'

@@ -114,6 +114,14 @@
         - lens
         - k8s
 
+    - name: install lagoon
+      include: tasks/lagoon.yml
+      when: install_lagoon
+      become: true
+      tags:
+        - lagoon
+        - k8s
+
     - name: Install Spotify
       include: tasks/spotify.yml
       when: install_spotify
