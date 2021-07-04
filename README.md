@@ -49,9 +49,10 @@ There are some things that I haven't been able to automate yet.
 
 ### Set node version
 
-Set currently used `node` version with `nvm`
+Download and set currently used `node` version with `nvm`. This should theoretically be handled by the playbook, but it doesn't.
 
 ```console
+nvm install --lts
 nvm use --lts
 ```
 
@@ -77,11 +78,13 @@ Add ssh keys. For better or worse I backup my keys, so I need to copy them to `~
    ssh-add ~/.ssh/id_ed25519
    ```
 
-1. Run JetBrains Toolbox for the first time and install PHPStorm
+### Run JetBrains Toolbox
 
-   ```command
-   /opt/jetbrains-toolbox-1.20.8804/jetbrains-toolbox
-   ```
+Toolbox needs to be run once from the command line so the system can register the AppImage.
+
+```command
+/opt/jetbrains-toolbox-1.20.8804/jetbrains-toolbox
+```
 
 ### Docker registry cache
 
@@ -104,7 +107,7 @@ Add docker image caching to avoid hitting the docker pull limit.
 
    ```json
    {
-   "registry-mirrors": ["http://localhost:6000"]
+     "registry-mirrors": ["http://localhost:6000"]
    }
    ```
 
