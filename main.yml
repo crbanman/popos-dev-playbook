@@ -174,3 +174,10 @@
       become: true
       tags:
         - peek
+
+    - name: Install PulseAudio Volume Controle (pavucontrol)
+      include: tasks/pavucontrol.yml
+      when: install_pavucontrol
+      become: true
+      tags:
+        - pavucontrol
