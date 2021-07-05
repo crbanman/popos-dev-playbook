@@ -181,3 +181,9 @@
       become: true
       tags:
         - pavucontrol
+
+    - name: Set hardware clock to local timezone
+      include: tasks/hwclock.yml
+      when: hw_clock_local_timezone
+      tags:
+        - hwclock

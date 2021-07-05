@@ -1,0 +1,4 @@
+---
+- name: Set hardware clock to local timezone
+  timezone:
+    hwclock: local

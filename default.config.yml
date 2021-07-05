@@ -99,3 +99,7 @@ install_peek: true
 # PulseAudio controller that gives you more audio
 # settings like setting default/fallback sounds devices.
 install_pavucontrol: true
+
+# Sets the hardware clock to use the local timezone rather than UTC.
+# This is useful when dual booting with windows.
+hw_clock_local_timezone: true
