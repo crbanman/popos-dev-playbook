@@ -9,6 +9,9 @@ install_docker: true
 docker_compose_version: "1.28.0"
 docker_users: ["{{ ansible_env.USER }}"]
 
+# Development environment tool using Docker
+install_lando: true
+
 # ZSH
 install_zsh: true
 antigen_users:

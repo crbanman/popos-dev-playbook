@@ -75,6 +75,13 @@
         - yarn
 
   tasks:
+    - name: Install Lando
+      include: tasks/lando.yml
+      when: install_lando
+      become: true
+      tags:
+        - lando
+
     - name: Install AWS Cli
       include: tasks/awscli.yml
       when: install_aws
