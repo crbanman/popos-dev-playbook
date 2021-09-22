@@ -14,5 +14,5 @@
 
 - name: Ensure lens is installed
   apt:
-    deb: "https://github.com/lensapp/lens/releases/download/v{{ lens_version }}/Lens-{{ lens_version }}.amd64.deb"
+    deb: "https://api.k8slens.dev/binaries/Lens-{{ lens_version }}.amd64.deb"
     state: present

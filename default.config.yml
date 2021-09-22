@@ -47,7 +47,7 @@ install_minikube: true
 install_helm: true
 
 install_lens: true
-lens_version: 4.2.5
+lens_version: 5.2.3-latest.20210921.1
 
 # CLI for interacting with a Lagoon instance
 install_lagoon: true
@@ -98,10 +98,6 @@ install_camset: true
 
 # Screen capture to gif utility
 install_peek: true
-
-# PulseAudio controller that gives you more audio
-# settings like setting default/fallback sounds devices.
-install_pavucontrol: true
 
 # Sets the hardware clock to use the local timezone rather than UTC.
 # This is useful when dual booting with windows.

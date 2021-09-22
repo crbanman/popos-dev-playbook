@@ -182,13 +182,6 @@
       tags:
         - peek
 
-    - name: Install PulseAudio Volume Controle (pavucontrol)
-      include: tasks/pavucontrol.yml
-      when: install_pavucontrol
-      become: true
-      tags:
-        - pavucontrol
-
     - name: Set hardware clock to local timezone
       include: tasks/hwclock.yml
       when: hw_clock_local_timezone
