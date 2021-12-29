@@ -27,6 +27,11 @@
       become: true
       tags:
         - docker
+    - role: geerlingguy.php-versions
+      when: install_php
+      become: true
+      tags:
+        - php
     - role: geerlingguy.php
       when: install_php
       become: true

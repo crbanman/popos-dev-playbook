@@ -51,11 +51,11 @@ lens_version: 5.2.3-latest.20210921.1
 
 # CLI for interacting with a Lagoon instance
 install_lagoon: true
-lagoon_version: 0.11.4
+lagoon_version: v0.12.0
 
 # PHP
 install_php: true
-php_default_version_debian: "7.4"
+php_version: "8.0"
 php_enable_webserver: false
 php_packages_extra:
   - php-curl
@@ -88,10 +88,10 @@ install_bitwarden: true
 
 # IM apps
 install_mattermost: true
-mattermost_version: 4.7.0
+mattermost_version: 5.0.2
 
 install_slack: true
-slack_version: 4.17.0
+slack_version: 4.23.0
 
 # Tool for adjusting webcam settings
 install_camset: true

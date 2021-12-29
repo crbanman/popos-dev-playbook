@@ -5,6 +5,7 @@ roles:
   - name: gantsign.antigen_bundles
   - name: geerlingguy.composer
   - name: geerlingguy.docker
+  - name: geerlingguy.php-versions
   - name: geerlingguy.php
   - name: ngetchell.vscode
   - name: ocha.yarn

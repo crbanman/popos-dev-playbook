@@ -14,4 +14,4 @@
 
 - name: slack install
   apt:
-    deb: https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack_version }}-amd64.deb
+    deb: https://downloads.slack-edge.com/releases/linux/{{ slack_version }}/prod/x64/slack-desktop-{{ slack_version }}-amd64.deb
