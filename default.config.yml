@@ -1,6 +1,10 @@
 ---
 downloads: ~/.ansible-downloads/
 
+# PHP
+install_php: true
+install_composer: true
+
 # Browser
 install_chrome: true
 
@@ -52,19 +56,6 @@ lens_version: 5.2.3-latest.20210921.1
 # CLI for interacting with a Lagoon instance
 install_lagoon: true
 lagoon_version: v0.12.0
-
-# PHP
-install_php: true
-php_version: "8.0"
-php_enable_webserver: false
-php_packages_extra:
-  - php-curl
-  - php-gd
-  - php-mysql
-  - php-xml
-  - php-zip
-  - php-mbstring
-install_composer: true
 
 # Node
 install_nvm: true

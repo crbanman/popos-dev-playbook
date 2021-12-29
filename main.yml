@@ -15,8 +15,20 @@
       set_fact: ansible_distribution="Ubuntu"
       tags:
         - always
+    - name: Install PHP
+      include: tasks/php.yml
+      when: install_php
+      become: true
+      tags:
+        - php
 
   roles:
+    - role: geerlingguy.composer
+      when: install_composer
+      become: true
+      tags:
+        - php
+        - composer
     - role: darkwizard242.googlechrome
       when: install_chrome
       become: true
@@ -27,22 +39,6 @@
       become: true
       tags:
         - docker
-    - role: geerlingguy.php-versions
-      when: install_php
-      become: true
-      tags:
-        - php
-    - role: geerlingguy.php
-      when: install_php
-      become: true
-      tags:
-        - php
-    - role: geerlingguy.composer
-      when: install_composer
-      become: true
-      tags:
-        - php
-        - composer
     - role: gantsign.antigen
       when: install_zsh
       become: true
