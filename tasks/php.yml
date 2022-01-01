@@ -1,0 +1,24 @@
+---
+- name: Only run update cache if the last one is more than 3600 seconds ago
+  apt:
+    update_cache: true
+    cache_valid_time: 3600
+- name: Install the php package
+  apt:
+    name: php
+- name: Remove apache2 and apache2-bin if they were installed
+  apt:
+    pkg:
+    - apache2
+    - apache2-bin
+    state: absent
+    purge: yes
+- name: Install extra php packages
+  apt:
+    pkg:
+    - php-curl
+    - php-gd
+    - php-mysql
+    - php-xml
+    - php-zip
+    - php-mbstring
