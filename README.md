@@ -56,6 +56,14 @@ nvm install --lts
 nvm use --lts
 ```
 
+### Install yarn
+
+Yarn can be installed once npm (from setting the node version).
+
+```console
+npm install --global yarn
+```
+
 ### Register SSH Keys
 
 Add ssh keys. For better or worse I backup my keys, so I need to copy them to `~/.ssh/` and add them to the `ssh-agent`.

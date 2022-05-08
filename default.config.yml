@@ -59,7 +59,6 @@ lagoon_version: v0.12.3
 
 # Node
 install_nvm: true
-install_yarn: true
 
 # IDEs
 install_jetbrains_toolbox: true

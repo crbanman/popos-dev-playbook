@@ -72,13 +72,6 @@
         - node
         - nvm
 
-    - name: Install yarn
-      include: tasks/yarn.yml
-      when: install_yarn
-      tags:
-        - node
-        - yarn
-
     - name: Install Lando
       include: tasks/lando.yml
       when: install_lando
