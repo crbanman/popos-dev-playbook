@@ -1,0 +1,13 @@
+---
+- name: check if nvm is installed
+  command: nvm --version
+  register: nvm_version_cmd
+  changed_when: false
+  ignore_errors: true
+
+- name: Install nvm
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+  when: nvm_version_cmd is failed

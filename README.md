@@ -4,7 +4,7 @@ This playbook installs most of the software that I use on my dev machine for web
 
 ## Assumptions
 
-Meant to be used on a fresh install of Pop!_OS 21.10, but should work on existing installs of the OS (be sure to configure only what you need). It will probably work on Ubuntu if flatpak is installed, but that hasn't been tested so your mileage may vary.
+Meant to be used on a fresh install of Pop!_OS 22.04, but should work on existing installs of the OS (be sure to configure only what you need). It will probably work on Ubuntu if flatpak is installed, but that hasn't been tested so your mileage may vary.
 
 ## Prerequisites
 
@@ -54,6 +54,14 @@ Download and set currently used `node` version with `nvm`. This should theoretic
 ```console
 nvm install --lts
 nvm use --lts
+```
+
+### Install yarn
+
+Yarn can be installed once npm (from setting the node version).
+
+```console
+npm install --global yarn
 ```
 
 ### Register SSH Keys

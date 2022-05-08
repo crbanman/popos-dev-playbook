@@ -51,21 +51,19 @@ install_minikube: true
 install_helm: true
 
 install_lens: true
-lens_version: 5.2.3-latest.20210921.1
+lens_version: 5.4.6-latest.20220428.1
 
 # CLI for interacting with a Lagoon instance
 install_lagoon: true
-lagoon_version: v0.12.0
+lagoon_version: v0.12.3
 
 # Node
 install_nvm: true
-nvm_version: "latest"
-nvm_node_version: "lts"
-
-install_yarn: true
 
 # IDEs
 install_jetbrains_toolbox: true
+toolbox_version: "1.24.11947"
+
 install_vscode: true
 
 # Task execution tool
@@ -79,10 +77,10 @@ install_bitwarden: true
 
 # IM apps
 install_mattermost: true
-mattermost_version: 5.0.2
+mattermost_version: 5.0.4
 
 install_slack: true
-slack_version: 4.23.0
+slack_version: 4.25.0
 
 # Tool for adjusting webcam settings
 install_camset: true
