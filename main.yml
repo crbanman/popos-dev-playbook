@@ -63,19 +63,22 @@
       become: true
       tags:
         - vscode
-    - role: stephdewit.nvm
+
+  tasks:
+    - name: Install NVM
+      include: task/nvm.yml
       when: install_nvm
       tags:
         - node
         - nvm
-    - role: ocha.yarn
+
+    - name: Install yarn
+      include: task/yarn.yml
       when: install_yarn
-      become: true
       tags:
         - node
         - yarn
 
-  tasks:
     - name: Install Lando
       include: tasks/lando.yml
       when: install_lando

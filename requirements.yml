@@ -6,8 +6,6 @@ roles:
   - name: geerlingguy.composer
   - name: geerlingguy.docker
   - name: ngetchell.vscode
-  - name: ocha.yarn
-  - name: stephdewit.nvm
   - name: webarchitect609.jet_brains_toolbox
 
 collections:
