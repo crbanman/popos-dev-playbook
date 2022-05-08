@@ -16,7 +16,7 @@
       tags:
         - always
     - name: Install PHP
-      include: tasks/php.yml
+      include_task: tasks/php.yml
       when: install_php
       become: true
       tags:
@@ -66,28 +66,28 @@
 
   tasks:
     - name: Install NVM
-      include: tasks/nvm.yml
+      include_task: tasks/nvm.yml
       when: install_nvm
       tags:
         - node
         - nvm
 
     - name: Install Lando
-      include: tasks/lando.yml
+      include_task: tasks/lando.yml
       when: install_lando
       become: true
       tags:
         - lando
 
     - name: Install AWS Cli
-      include: tasks/awscli.yml
+      include_task: tasks/awscli.yml
       when: install_aws
       become: true
       tags:
         - awscli
 
     - name: Install kubectl
-      include: tasks/kubectl.yml
+      include_task: tasks/kubectl.yml
       when: install_kubectl
       become: true
       tags:
@@ -95,7 +95,7 @@
         - k8s
 
     - name: Install minikube
-      include: tasks/minikube.yml
+      include_task: tasks/minikube.yml
       when: install_minikube
       become: true
       tags:
@@ -103,7 +103,7 @@
         - k8s
 
     - name: Install helm
-      include: tasks/helm.yml
+      include_task: tasks/helm.yml
       when: install_helm
       become: true
       tags:
@@ -111,7 +111,7 @@
         - k8s
 
     - name: install lens
-      include: tasks/lens.yml
+      include_task: tasks/lens.yml
       when: install_lens
       become: true
       tags:
@@ -119,7 +119,7 @@
         - k8s
 
     - name: install lagoon
-      include: tasks/lagoon.yml
+      include_task: tasks/lagoon.yml
       when: install_lagoon
       become: true
       tags:
@@ -127,60 +127,60 @@
         - k8s
 
     - name: Install Spotify
-      include: tasks/spotify.yml
+      include_task: tasks/spotify.yml
       when: install_spotify
       tags:
         - spotify
 
     - name: Install Bitwarden
-      include: tasks/bitwarden.yml
+      include_task: tasks/bitwarden.yml
       when: install_bitwarden
       tags:
         - bitwarden
 
     - name: Install Slack
-      include: tasks/slack.yml
+      include_task: tasks/slack.yml
       when: install_slack
       become: true
       tags:
         - slack
 
     - name: Install Mattermost Desktop
-      include: tasks/mattermost.yml
+      include_task: tasks/mattermost.yml
       when: install_mattermost
       become: true
       tags:
         - mattermost
 
     - name: Set .zshrc
-      include: tasks/zshrc.yml
+      include_task: tasks/zshrc.yml
       when: configure_zshrc
       tags:
         - zshrc
 
     - name: Install camset
-      include: tasks/camset.yml
+      include_task: tasks/camset.yml
       when: install_camset
       become: true
       tags:
         - camset
 
     - name: Install invoke
-      include: tasks/invoke.yml
+      include_task: tasks/invoke.yml
       when: install_invoke
       become: true
       tags:
         - invoke
 
     - name: Install peek
-      include: tasks/peek.yml
+      include_task: tasks/peek.yml
       when: install_peek
       become: true
       tags:
         - peek
 
     - name: Set hardware clock to local timezone
-      include: tasks/hwclock.yml
+      include_task: tasks/hwclock.yml
       when: hw_clock_local_timezone
       tags:
         - hwclock
