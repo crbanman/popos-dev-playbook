@@ -66,14 +66,14 @@
 
   tasks:
     - name: Install NVM
-      include: task/nvm.yml
+      include: tasks/nvm.yml
       when: install_nvm
       tags:
         - node
         - nvm
 
     - name: Install yarn
-      include: task/yarn.yml
+      include: tasks/yarn.yml
       when: install_yarn
       tags:
         - node
